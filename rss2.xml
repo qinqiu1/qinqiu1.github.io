@@ -9,8 +9,30 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>选择有时候比努力更重要</description>
-    <pubDate>Sat, 12 Aug 2023 14:50:05 GMT</pubDate>
+    <pubDate>Sun, 13 Aug 2023 14:08:22 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title></title>
+      <link>http://example.com/2023/08/13/ccf2014%E5%B9%B43%E6%9C%88/</link>
+      <guid>http://example.com/2023/08/13/ccf2014%E5%B9%B43%E6%9C%88/</guid>
+      <pubDate>Sun, 13 Aug 2023 14:06:45 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;CCF2014年3月第二题&quot;&gt;&lt;a href=&quot;#CCF2014年3月第二题&quot; class=&quot;headerlink&quot; title=&quot;CCF2014年3月第二题&quot;&gt;&lt;/a&gt;CCF2014年3月第二题&lt;/h1&gt;&lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; cla</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<h1 id="CCF2014年3月第二题"><a href="#CCF2014年3月第二题" class="headerlink" title="CCF2014年3月第二题"></a>CCF2014年3月第二题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在某图形操作系统中,有 N 个窗口,每个窗口都是一个两边与坐标轴分别平行的矩形区域。窗口的边界上的点也属于该窗口。窗口之间有层次的区别,在多于一个窗口重叠的区域里,只会显示位于顶层的窗口里的内容。<br>当你点击屏幕上一个点的时候,你就选择了处于被点击位置的最顶层窗口,并且这个窗口就会被移到所有窗口的最顶层,而剩余的窗口的层次顺序不变。如果你点击的位置不属于任何窗口,则系统会忽略你这次点击。<br>现在我们希望你写一个程序模拟点击窗口的过程。</p><h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2><p>输入的第一行有两个正整数,即 N 和 M。(1 ≤ N ≤ 10,1 ≤ M ≤ 10)<br>接下来** N 行按照从最下层到最顶层的顺序**给出 N 个窗口的位置。 每行包含四个非负整数 x1, y1, x2, y2,表示该窗口的一对顶点坐标分别为 (x1, y1) 和 (x2, y2)。保证 x1 &lt; x2, y1 &lt; y2。<br>接下来 M 行每行包含两个非负整数 x, y,表示一次鼠标点击的坐标。<br>题目中涉及到的所有点和矩形的顶点的 x, y 坐标分别不超过 2559 和 1439 。</p><h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><p>输出包括 M 行,每一行表示一次鼠标点击的结果。如果该次鼠标点击选择了一个窗口,则输出这个窗口的编号(窗口按照输入中的顺序<strong>从 1 编号到 N</strong>);如果没有,则输出”IGNORED”(不含双引号)。</p><h2 id="参考代码（Java）"><a href="#参考代码（Java）" class="headerlink" title="参考代码（Java）"></a>参考代码（Java）</h2><pre><code>package cs;import java.util.Scanner;public class SortWindows &#123;public static void main(String[] args) &#123;    Scanner scanner = new Scanner(System.in);    // 获取第一行的输入    int n = scanner.nextInt();    int m = scanner.nextInt();    //用于存储结果的数组    Object[] result = new Object[m];    //存储窗口    window[] windows = new window[n];    // 获取 n 行的输入    for (int i = 0; i &lt; n; i++) &#123;        windows[i] = new window(scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), scanner.nextInt(), i + 1);    &#125;    // 获取 m 行的输入    for (int i = 0; i &lt; m; i++) &#123;        int x = scanner.nextInt();        int y = scanner.nextInt();        result[i] = findclickWindow(x, y, windows) != -1 ? windows[findclickWindow(x, y, windows)].id : &quot;IGNORED&quot;;        if (findclickWindow(x, y, windows) != -1) &#123;            bringtotop(findclickWindow(x, y, windows), windows);        &#125;    &#125;    for (Object obj : result) &#123;        System.out.println(obj);    &#125;    scanner.close();&#125;//查询点击的窗口public static int findclickWindow(int x, int y, window[] windows) &#123;    for (int i = windows.length - 1; i &gt;= 0; i--) &#123;        if (x &gt;= windows[i].x1 &amp;&amp; x &lt;= windows[i].x2 &amp;&amp; y &gt;= windows[i].y1 &amp;&amp; y &lt;= windows[i].y2) &#123;            return i;        &#125;    &#125;    return -1;&#125;//将点击到的窗口移到第一public static void bringtotop(int index, window[] windows) &#123;    window clickwindow = windows[index];    for (int i = index; i &lt; windows.length - 1; i++) &#123;        windows[i] = windows[i + 1];    &#125;    windows[windows.length - 1] = clickwindow;&#125;&#125;class window &#123;int x1, y1, x2, y2, id;public window(int x1, int y1, int x2, int y2, int id) &#123;this.x1 = x1;this.x2 = x2;this.y1 = y1;this.y2 = y2;this.id = id;&#125;&#125;</code></pre>]]></content:encoded>
+      
+      
+      
+      
+      <comments>http://example.com/2023/08/13/ccf2014%E5%B9%B43%E6%9C%88/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>从头开始</title>
